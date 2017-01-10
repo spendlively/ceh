@@ -1,0 +1,180 @@
+//Цели сетевого сканирования
+1. Обнаружить живые хосты, идентифицировав их по ip-адресам или открытым портам
+2. Обнаружить ОС на этих адресах
+3. Обнаружить сервисы на этих ОС
+4. Обнаружить уязвимости у этих сервисов
+
+//Типы сканеров
+1. Сканер ip-адресов
+2. Сканер ip-портов для обнаружения сервисов (сможет определить ОС)
+3. Сканер уязвимостей (сканер безопасности)
+
+//IP/TCP ФЛАГИ
+Как работает tcp/ip
+- SYN
+- SYN+ACK
+- RST+ACK
+
+//Инструменты
+1. nmap (zenmap - nmap с gui)
+
+//Техники сканирования
+1. Ping Sweep - ICMP (ping) сканирование
+2. SSDP Scanning - обнаружение открытых портов
+3. Scanning Beyond IDS - техники обхода систем обнаружения вторжений
+4. Banner Grabbing - сбор баннеров (чтобы узнать какой сервер)
+5. Scan for Vulnerability - сканирование на предмет уязвиости
+6. Draw Network Diagrams - отрисовка топологии сети
+7. Prepare Proxies - подготовка прокси серверов
+8. Scanning Pen Testing - тестирование на проникновение
+
+//1. Ping Sweep Инструменты для ICMP (ping) сканирование
+- Colasoft Ping Tool
+- Visual Ping Trster - Standart
+- Ping Scanner Pro
+- OpUtils
+- PingInfoView
+- Advanced IP Scanner
+- Ping Sweep
+- Network Ping
+- Ping Monitor
+- Pinkie
+
+//1. Ping Sweep NMAP
+nmap -sn 192.168.1.5
+В локальной сети nmap вместо icmp использует arp т.к. icmp можно закрыть на firewall, а arp нельзя.
+Но только в локальной сети, т.к. arp не маршрутизируется, а icmp маршритузируется.
+Отправляет:
+- запрос тип 8, код 0
+- timestamp-request тип 13, код 0 (Сколько времени)
+//icmp + traceroute
+sudo nmap -sn 192.168.1.5 --traceroute
+//zenmap
+Команда: nmap -sn 192.168.1.5 --traceroute
+Вывод nmap: вывод nmap
+Топология: вывод топологии traceroute
+
+//Инструменты для SSDP Scanning (обнаружение открытых портов)
+- nmap
+- Hping2/Hping3 (может отправлять почти произвольный tcp/ip пакет)
+- nping
+
+//2. SSDP Scanning NMAP
+1. TCP Connect (Сканирование с полностью открытими подключениями)
+Если стоит firewall который отмечает соединения, то он отметит соединение
+Не нужны права root
+nmap -sT -p 22-23 192.168.1.7
+nmap -sT -p 1-1000 192.168.1.2
+2. Stealth Scan (Сканирование с полу-открытими соединениями)
+Stealth потому что хакер SYN+ACK не подтверждает, а сразу RST
+Если стоит firewall который отмечает соединения, то он не отметит
+Нужны права root
+nmap -sS -p 1-1000 192.168.1.7
+nmap -sS -p 1-1000 192.168.1.2
+3. Inverse TCP Flag Scanning - сканирование с инверсией TCP флага
+SYN пакет отправлен
+4. Xmas Scan - отправляет неправильные пакеты (в win не работает)
+nmap -sX -p 1-1000 192.168.1.2
+5. FIN Scan - отправляет неправильные пакеты (в win не работает)
+nmap -sF -p 1-1000 192.168.1.2
+6. Нулевое сканирование (в win не работает)
+nmap -sN -p 1-1000 192.168.1.2
+7. IDLE/IPID Header Scan (сканирование от имени зомби)
+Ваш ip-адрес не будет фигурировать вообще
+nmap | grep Idle
+nmap -sI zombie-ip attacked-ip -p 80
+nmap -sI 192.168.1.7 192.168.1.2 -p 80
+8. UDP Scanning!!! (UDP сканирование)
+nmap -sU 192.168.1.7 -p 80
+
+//Программы для сканирования портов
+- SuperScan
+- PRTG Network Monitor
+- Net Tools
+- IP-Tools
+- MegaPing
+- Network Inventory Explorer
+- Global Network Inventory Scanner
+- SoftPerfect Port Scanner
+- CurrPorts
+
+//Программы для сканирования портов для мобильных устройств
+- Umit Network Scanner
+- Fing
+- IP Network Scanner
+- PortDroid Network Analysis
+- Pamn IP Scanner
+- Network Discovery
+
+//3. Scanning Beyond IDS Техники обхода систем обнаружения вторжений (nmap умеет)
+- Фрагментация ip пакетов
+- Спуфинг вашего ip адреса
+- Маршрутизация
+- Использования прокси
+
+//4. Banner Grabbing Tools (Сбор баннеров)
+Находжение информации о серверах в заголовках http и т.д.
+- ID Serve
+- Netcraft
+- nmap
+nmap -sV scanme.nmap.org
+nmap -sV -p 80 192.168.1.2
+nmap -sV 192.168.1.2
+
+//ГУГЛ хакинг: поиск расширения php или asp на сайте
+site: site.ru ext:php
+site: site.ru ext:asp
+
+//5. Scan for Vulnerability - сканирование на предмет уязвиости
+
+//Программы
+- Nessus
+- GFI LanGuard
+- Qualys FreeScan
+
+//Сканеры
+- Retina CS
+- Core Impact Professional
+- MBSA (microsoft baseline security analiser)
+- Shadow Security Scanner
+- Nsauditor Network Security Auditor
+- OpenVAS
+- Security Manager Plus
+- Nexpose
+- SAINT
+- Security Auditor's Research Assistant (SARA)
+
+//Поиск уязвимостей с помощью nmap
+//Скрипты nmap .nse (nmap script engine)
+//path/to/nmap/scripts/*.nse
+ls -al /usr/share/nmap/scripts/
+nano filename.nse | grep usage (Просмотр как использовать)
+nmap --script=filename.nse
+
+sudo nmap 192.168.1.2 --script ssh-hostkey --script-args ssh_hostkey=full 
+//Есть конспектик у Клевогина
+
+//Сканер уязвимости веб-приложений
+- HP Webinpect
+- SecPoint Penetrator
+
+//MBSA - microsoft baseline security analiser
+Для виндовс админов
+Подключеется к серверу с паролем админа, проверяет пользователей и т.д.
+
+//6. Draw Network Diagrams - отрисовка топологии сети
+- nmap --traceroute
+- The Dude
+- LANState
+- Friendly Pinger (рисует карты tcp/ip и КАНАЛЬНОГО уровня)
+- Ipsonar
+- WhatsConnected
+- Switch Center Enterprise
+- InterMapper
+- NetMapper
+- NetBrain Enterprise Suite
+- Spiceworks-Network Mapper
+
+
+//Определение ОС
+nmap -O 192.168.1.7

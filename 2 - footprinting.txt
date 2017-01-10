@@ -1,0 +1,245 @@
+//1 фаза - сбор данных (footprinting)
+//3 цели сбора данных
+
+1. сбор информации о сети
+    - доменные имена внешние и внутренние
+    - блоки сетевых адресов
+    - ip-адреса
+    - вебсайты внешние и внутренние
+    - настоящие и ненастоящие сервисы, кот. там работают
+    - системы обнаружения вторжения
+    - Domain name
+    - Internal domain names
+    - Network blocks
+    - IP addresses of the reachable systems
+    - Rogue websites/private websites
+    - TCP and UDP services running 
+    - Access control mechnisms and ACL/s
+    - Networking protocols
+    - VPN Points
+    - IDSes running
+    - Analog/digital telephone numbers
+    - Authentication mechanisms
+    - System enumeration
+
+2. сбор информации о системах
+    - ОС
+    - Версия сервера
+    - Архитектура системы
+    - Пароль
+    - User and group names
+    - System banners
+    - Routing tables 
+    - SNMP Information
+    - System architecture
+    - Remote system type
+    - System names
+    - Passwords
+
+3. сбор информации об организации
+    - Кто начальник
+    - кто заместитель
+    - Кто работает
+    - Какие е-мейлы
+    - Где оффисы
+    - Где расположены
+    - Что за организация и как она работает
+    - Employes details
+    - Organization's website
+    - Company directory
+    - Location details
+    - Address and phone numbers
+    - Comments in HTML source code
+    - Security policies implemented
+    - Web server links relevant to the organization
+    - Backgroung of the organization
+    - News articlies
+    - Press releases
+
+//Источники для сбора информации
+1. Поисковые движки
+2. Расширенный поиск в поисковом двидже
+3. Соц. сети
+4. Сайт организации
+5. У почтового сервера
+6. Методы конкурентной разведки
+7. БД регистраторов ip: Whois, сетевой футпринтинг
+8. ДНС 
+9. Поиск в инете
+10. Социальная инженерия
+
+//Поисковые движки
+google
+bing
+ghdb
+gigs akert
+yahoo!
+yandex
+shodan
+internet footprint pdf
+
+//link extractor online (вбить в гугле)
+webtoolhub.com
+
+//Поиск в netcraft (What’s that site running?)
+netcraft.com
+- ос
+- поддомены
+- вебсервер
+- ...
+
+//Приложение web data extractor
+
+//ServSniff Domain Report
+
+//Поисковик shodan.io 
+//Сохраняет http заголовки
+shodan.io
+www.ema.ru
+//Расширение shodan
+- показывает порты
+
+//Информация о местоположении
+maps.yandex.ru
+maps.google.com
+
+//Поиск людей
+https://yandex.ru/people?lr=65
+linkedin 
+pipl.com
+spokeo.com
+www.anywho.com
+
+//Мониторинг, что появляется на сайте
+//Можно создать оповещение для запроса "0day exploit"
+google.com/alerts
+alerts.yahoo.com
+twitter.com/alerts
+gigaalert.com
+
+//Группы, форумы, блоги
+
+//Скрипт goohost.sh
+./goohost.sh -t www.ema.ru
+
+
+//Гугл хакинг
+site:www.ema.ru
+site:.ema.ru
+site:.ema.ru -www
+//Тип файла
+ext:
+filetype:
+//Вывод списка, когда есть файловый сервер по http
+indexof: mp3 Beatles
+//Еще (Операторы гугл)
+cache, link, related, info, allintitle, intitle, allinurl, inurl
+//Google Hacking Data Base
+//Вбить в гугле: exploit-db GHDB
+https://www.exploit-db.com/google-hacking-database/ 
+//Там можно найти ДОРКИ - урлы для поиска всяких уязвимостей
+//с помощью Google Hacking
+
+//Скрипты
+https://www.google.ru/search?q=hack
+
+//Анализ сайта
+//Поиск емаилов в html-коде
+CTRL+F: @ema
+CTRL+F: mail
+CTRL+F: mailto
+//Можно сделать с помощью web data extrackor
+ 
+//Зеркалирование сайта
+//HTTrack - выкачивание сайта полностью (зеркалирование)
+httrack --help
+//ЕЩЕ:
+- BlackWindow
+- NCollector Studio
+- Website Ripper Copier
+- Teleport Pro
+- Portable Offline Browser
+- PageNest
+- Backstreet Browser
+- Offline Explorer Enterprise
+- GNU Wget
+- Hooeey Webprint
+
+//Архив веб
+archive.org
+
+//Website-Watcher - зеркалирование и просмотр изменений на сайте
+
+//Сбор инфы по почте
+1. Анализ почтовых заголовков
+    - eMailTrackerPro http://www.emailtrackerpro.com/ 
+2. Получение отчета о прочтении письма 
+    - Read Notify
+    - Yesware
+    - ContactMonkey
+    - DidTheyReadIt
+    - Trace Email
+    - Zendio
+    - Pointofmail
+    - WhoReadMe
+    - GetNotify
+    - G-Lock Analytics
+
+
+//Конкурентная разведка
+1. Компании предоставляющие данные различных организаций
+2. Репутация и рейтинг сайта
+    - Rankur
+    - Social Mention
+    - ReputationDefender
+    - Naymz
+    - Brandyourself
+    - Google Alerts
+    - WhosTalkin
+    - PR Software
+    - BrandsEye
+    - Talkwalker
+
+
+//WHOIS базы данных регистраторов
+whois www.ema.ru
+
+//Проверка ДНС сервера
+- www.dnsstuff.com
+- network-tools.com
+- nslookup подключение к самому dns-серверу
+
+//Обнаружение диапазона ip-адресов в бд регистратора 
+1. ping домен -> получаем ip-адрес
+2. вводим ip на nic.ru whois -> смотрим инфу об ip
+Может показать сеть ip-адресов, которая кому-то принадлежит
+
+//Разрешение ip в доменное имя
+ping -a 1.1.1.1 -n 1
+
+//Разрешение ip в доменное имя с выбором днс сервера
+nslookup
+server ip-dns-servera
+set type=ptr
+227.207.189.213.in-addr.arpa (наоборот )
+
+
+//Трассировка
+//ICMP
+ping ya.ru -i 1 (через ближайший роутер ttl=1)
+ping ya.ru -i 2 (ttl=2)
+ping ya.ru -i 3 (ttl=3)
+ping ya.ru --traceroute
+//Трассировка через 80, 443 порты
+nmap --traceroute host.ru -n 80
+//Визуальная трассировка с геолокацией
+- Path Analizer Pro
+- VisualRoute
+
+//Комплексный фреймворк для сбора инфы (linux и windows)
+//Есть в Kali linux
+Maltego
+
+
+
+

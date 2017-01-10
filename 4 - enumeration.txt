@@ -1,0 +1,84 @@
+//Enumeration
+Расширение техник сканирования с помощью перечислений.
+
+//Протоколы для перечисления
+- SMB
+- SNMP
+- LDAP
+- NTP
+- SMTP and DNS
+- Enumeration Countermeasures
+- Enumeration Pen testing
+
+//NetBIOS Enumeration (smb - server message block)
+//Получить netbios имена 
+bntstat -n
+
+//Инструменты
+- SuperScan
+- Hyena
+- Winfingerprint 
+- NetBIOS Enumerator
+- Nsauditor Network Security Auditor
+- PsExec
+- PsFile
+- PsGetSid
+- PsKill
+- Psinfo
+- PsList
+- PsLoggedOn
+- PsLogList
+- PsPasswd
+- PsShutdown
+
+
+//SuperScan
+Windows Enumeration
+Hostname/IP/URL: teacher-2012 (Адрес машины)
+Enumeration Type: Перечесление чего сканировать
+Options -> User Name, Password, Ok: Пользователь
+Enumerate
+
+//SNMP
+Просмотр статистики
+netstat -s | grep ICMP
+//Есть ли SNMP
+nmap -sU 192.168.1.7 -p 161
+//SNMP-клиент
+Snmputil.exe
+snmputil get 192.168.1.7 public .1.3.6.1.2.1.1.1.0
+snmputil get 192.168.1.7 public .1.3.6.1.2.1.1.2.0
+snmputil get 192.168.1.7 public .1.3.6.1.2.1.1.3.0
+snmputil get 192.168.1.7 public .1.3.6.1.2.1.1.4.0
+snmputil get 192.168.1.7 public .1.3.6.1.2.1.1.5.0
+
+//Клиенты SNMP
+- ManageEngine MiB Browser
+- PowerSNMP free manager
+- OpUtils
+- Engineer's Toolset
+- SNMP Scanner
+- Getif
+- OiDViEW SNMP MiB Browser
+- iReasoning MiB Browser
+- SnScan
+- SoftPerfect Network Scanner
+- SNMP Informant
+- Net-SNMP
+- Nsauditor Network Security Auditor
+- Spiceworks
+
+//LDAP - протокол который использует контроллер домена
+Порт 389
+Обычно кто dns-сервер тот и контроллер домена
+ipconfig /all
+
+//Инструменты
+- Rsat (remote server administration tools)
+- adexplorer 
+
+//NTP 123 порт
+
+//SMTP and DNS
+
+
