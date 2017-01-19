@@ -1,0 +1,10 @@
+//Ссылка на yandex maps
+http://mobile.maps.yandex.net/cellid_location/?clid=1866854&lac=-1&cellid=-1&operatorid=null&countrycode=null&signalstrength=-1&wifinetworks=EE43F6D1B690:-65&app=ymetro
+
+wifinetworks = BSSID
+
+<location source="FoundByWifi">
+<coordinates latitude="45.0386086" longitude="39.0995293" nlatitude="45.0394978" nlongitude="39.1007878"/>
+</location>
+
+

