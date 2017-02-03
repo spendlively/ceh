@@ -1,0 +1,10 @@
+//Установка
+//Скачать deb-пакет с офф. сайта
+https://www.paterva.com/
+dpkg -i *.deb
+
+//Сбор данных
+1. + New Graph
+2. Infrastructure -> Domain D'n'D в окно "New Graph (1)" и задать адрес домена
+3. ПКМ -> All Transforms
+4. Выбор подузла -> ПКМ -> All Transforms

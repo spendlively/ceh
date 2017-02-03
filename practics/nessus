@@ -1,0 +1,12 @@
+//Установка
+1. Скачать nessus
+http://www.tenable.com/products/nessus/select-your-operating-system
+2. dpkg -i
+3. /etc/init.d/nessusd start
+4. https://localhost:8834/
+
+//Сканирование
+Scans -> (+) New Scan -> Advanced Scan
+Targets: 192.168.0.100
+Save
+Launch

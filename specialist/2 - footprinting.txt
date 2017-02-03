@@ -130,6 +130,8 @@ site:.ema.ru -www
 //Тип файла
 ext:
 filetype:
++inbody:"www.ema.ru"
++site:.site.ru +site:s1.site.ru
 //Вывод списка, когда есть файловый сервер по http
 indexof: mp3 Beatles
 //Еще (Операторы гугл)

@@ -1,0 +1,68 @@
+//WEB!!!
+The Web Application Hacker's Handbook: Finding and Exploiting Security Flaws
+
+The Tangled Web
+
+
+
+
+
+
+
+
+
+
+//Общеметодологическое описание тестов на проникновение и обнаружение уязвимостей
+
+Penetration testing, A hands-on introduction to hacking
+
+Penetration Tester's Open Source Toolkit
+
+Certified Ethical Hacker Review Guide
+
+Metasploit: The Penetration Tester's Guide
+
+RTFM: Red Team Field Manual
+
+Shellcoder's Handbook
+
+Hacking: the Art of Exploitation
+
+Gray Hat Hacking The Ethical Hackers Handbook
+
+
+
+
+//Анализ защищенности беспроводных сетей
+
+BackTrack 5 Wireless Penetration Testing Beginner's Guide
+
+
+
+
+//Анализ защищенности веб-приложений
+
+The Web Application Hacker's Handbook: Finding and Exploiting Security Flaws
+
+OWASP TestingGuide v4
+
+
+
+
+//Анализ защищенности мобильных платформ (Android, iOS)
+
+Mobile Application Hacker's Handbook
+
+Android Hacker'sHandbook
+
+
+
+//«Боевое» программирование
+
+Black Hat Python: Python Programming for Hackers and Pentesters
+
+Violent Python a Cookbook for Hackers
+
+Coding for Penetration Testers: Building Better Tools
+
+
