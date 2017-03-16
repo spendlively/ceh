@@ -1,0 +1,42 @@
+scheme://login.password@address:port/path/to/resource?query_string#fragment
+1. scheme: - Scheme/protocol name
+2. // - Indicator of a hierarchical URL (constant)
+3. login.password@ - Credentials to access the resource (optional)
+4. address - Server to retrieve the data from
+5. :port - Port number to connect to (optional)
+6. /path/to/resource - Hierarchical Unix path to a resource
+7. ?query_string - “Query string” parameters (optional)
+8. #fragment - “Fragment identifier” (optional)
+
+1. Схема
+http:, https:, and ftp:
+data: or javascript:
+
+mailto:spendlively@yandex.ru
+
+http:mim54.ru/
+javascript://mim54.ru/%0Aalert(1)
+mailto://user@example.com
+
+4. Адрес
+DNS name, ipv4 adress or ipv6 adress
+
+ipv4 adress
+http://127.0.0.1/
+http://0x7f.1/
+http://017700000001/
+
+//10.0.0.1
+http://example.com&gibberish=1234@167772161/
+
+//coredump.cx
+http://example.com\@coredump.cx/
+
+
+http://example.com/
+http://%65xample.%63om/
+http://%65%78%61%6d%70%6c%65%2e%63%6f%6d/
+
+view-source:http://www.example.com/
+
+

@@ -258,4 +258,45 @@ TODO
 
 
 
+//ДОПОЛНИТЕЛЬНЫЕ КОМАНДЫ
+//wpaclean
+
+//!!!!!!!!!!!!!!!!!!!!!
+Important: Do NOT use the “--ivs” option. 
+You must capture the full packets.
+airodump-ng -c 9 --bssid 00:14:6C:7E:40:80 -w psk mon0
+aircrack-ng -w password.lst -b 00:14:6C:7E:40:80 psk*.cap
+
+
+//airolib
+//https://www.youtube.com/watch?v=m-p9udccR6w
+//Поиск handshake
+airodump-nd -w wifi -c 6 --bssid 00:00:00:00:00:00 mon0
+//Импорт файла в виде списка паролей.
+airolib-ng crackwpa --import passwd /root/name_male.txt
+//Импорт файла в виде списка ESSIDs
+airolib-ng crackwpa --import essid /root/essid
+//Очистить базу данных от старых данных
+airolib-ng crackwpa --clean all
+//Вывод информации о базе данных
+airolib-ng crackwpa --stats
+//Начать пакетную обработку всех комбинаций ESSID и паролей
+airolib-ng crackwpa --batch
+//Проверка набора случайно выбранных PMKs. 
+//Если указывается «all» то все недействительные PMK 
+//которые существуют в базе данных будут удалены.
+airolib-ng crackwpa --verify all
+aircrack-ng -r crackwpa wifi-01.cap
+
+
+//--ivs
+How to Minimize Disk Space for Captures
+To minimize disk space used by the capture, include the “--ivs” option. 
+For example: “airodump-ng -c 8 --bssid 00:14:6C:7A:41:20 -w capture --ivs ath0”. 
+This only stores the initialization vectors and not the full packet. 
+This cannot be used if you are trying to capture the WPA/WPA2 handshake or if you want to use PTW attack on WEP.
+
+
+//Cracking wpa
+https://www.aircrack-ng.org/doku.php?id=cracking_wpa
 
